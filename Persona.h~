@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+
+using namespace std;
+using std::string;
+
+#ifndef PERSONA_H
+#define PERSONA_H
+class Persona{
+	protected:
+		string Nombre;
+		string Genero;
+		string ColorCabello;
+		string ColorOjos;
+		string ColorPiel;
+		bool Fertil;
+	public:
+		Persona(string,string,string,string,string,bool);
+		Persona();
+		
+		friend Persona operator+(const Persona &a, const Persona &b);
+		friend Persona operator*(const Persona &a,const Persona &b);
+		string getNombre();
+		void setNombre(string);
+
+		string getGenero();
+		void setGenero(string);
+
+		string getColorCabello();
+		void setColorCabello(string);
+
+		string getColorOjos();
+		void setColorOjos(string);
+
+		string getColorPiel();
+		void setColorPiel(string);
+
+		bool getFertil();
+		void setFertil(bool);
+
+};
+#endif
