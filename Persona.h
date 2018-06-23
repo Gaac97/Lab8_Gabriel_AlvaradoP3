@@ -39,6 +39,7 @@ class Persona{
 		
 		//Metodos sobrecargados
 		Persona* operator*(Persona& p);
+	 	Persona* operator+(Persona);
 
 };
 #endif

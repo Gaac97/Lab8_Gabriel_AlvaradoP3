@@ -46,22 +46,13 @@ int main(){
 			cout <<"Ingrese V si es fertil, F si es infertil"<<endl;
 			cin>>fer;
 		
-				if(fer=='v'){
-					fertil =true;
-		
-		
-				}
-		
 				if(fer=='V'){
 					fertil=true;
 		
 				}
-   		  	if(fer=='f'){
-     				fertil==false;
-     	
-     			}
+   		  
 				if(fer=='F'){
-					fertil=false;
+					fertil=true;
 		
 				}     	
      	
@@ -76,6 +67,9 @@ int main(){
  			 		
  	 				for(int i=0;i<ListPersona.size();i++){
  	 				cout<<i <<"."<< ListPersona[i]->getNombre()<<endl;
+ 	 				cout<<","<<ListPersona[i]->getGenero()<<endl;
+ 	 				cout<<","<<ListPersona[i]->getFertil()<<endl;
+ 	 				
  	 				cout<<endl;
  	 		
  				 	}
@@ -84,10 +78,15 @@ int main(){
  	 	}
  	 	
  	 	if(opcion==3){
- 	 		int pos;
-			cout<<"Ingrese la posicion"<<endl;
-			cin>>pos;
-			Eliminar(ListPersona,pos); 	
+ 	 		int j;
+		for (int i = 0; i < ListPersona.size(); i++) {
+          cout<<i<<","<<ListPersona[i]->getNombre()<<endl;
+        }
+        int pos;
+        cout<<"ingrese cual quiere eliminar: ";
+        cin>>j;
+
+        ListPersona.erase(ListPersona.begin()+j);	
  	 	
  	 	}
  	 	
@@ -127,8 +126,10 @@ int main(){
 				Sexo=true;
       		}
       		if (Sexo==true&&Menstrucion==true&&Fertil==true&SexoSinCondon==true){
-      Persona* tercera = (*perso1)*(*perso2); 
-            ListPersona.push_back(tercera);
+      Persona* hijo = (*perso1)*(*perso2); 
+            ListPersona.push_back(hijo);
+      		}else{
+					cout<<"No hay posibilidades para quedar embarazada"<<endl;      		
       		}
 		}
  	 	
@@ -158,9 +159,8 @@ int main(){
 				perso1->getGenero()=="Femenino"&&perso2->getGenero()=="Masculino"){
 				Sexo=true;
       		}
-      		if (Sexo==true
-      			&&Menstrucion==true&&Fertil==true&&SexoSinCondon==true){
-            Persona* hijo = (*perso1)*(*perso2); 
+      		if (Sexo==true&&Menstrucion==true&&Fertil==true&&SexoSinCondon==true){
+            Persona* hijo = (*perso1)+(*perso2); 
             ListPersona.push_back(hijo);
       		}else{
             cout<<"No salio embarazada"<<endl;
@@ -171,7 +171,7 @@ int main(){
  	 	}
  	 	
  	 	    
-     cout<<"Desea salir s/n"<<endl;
+     cout<<"Desea continuar s/n"<<endl;
      cin>>resp;
      }//Fin
      
@@ -182,13 +182,16 @@ int main(){
 
 
 
-vector<Persona*> Eliminar(vector<Persona*> vec, int
+/*vector<Persona*> Eliminar(vector<Persona*> vec, int
 pos)
 {
-   int last_pos = vec.size() - 1;
-   vec[pos] = vec[last_pos];
-   vec.pop_back();
-	return vec;
-	return vec;
-}
+   for (int i = 0; i < ListPersona.size(); i++) {
+          cout<<i<<") "<<ListPersona[i]->getNombre()<<endl;
+        }
+        int pos;
+        cout<<"ingrese cual quiere eliminar: ";
+        cin>>pos;
+
+        ListPersona.erase(ListPersona.begin()+eliminar);
+}*/
 

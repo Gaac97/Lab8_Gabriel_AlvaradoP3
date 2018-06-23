@@ -38,8 +38,8 @@ class Persona{
 		void setFertil(bool);
 		
 		//Metodos sobrecargados
-		Persona* operator+(Persona& );
 		Persona* operator*(Persona& p);
+	 	Persona* operator+(Persona);
 
 };
 #endif

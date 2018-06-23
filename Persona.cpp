@@ -21,7 +21,7 @@ Persona::Persona(string Nombre,string Genero,string ColorCabello,string ColorOjo
 
 
 
-//Sobrecarga de operadores, mediante funciones friend
+
 /*Persona operator+(const Persona &a ,const Persona &b) {
 	bool pa=false;
 	bool pb=false;
@@ -55,14 +55,27 @@ Persona::Persona(string Nombre,string Genero,string ColorCabello,string ColorOjo
 	}
 
 }*/
+//Condon
+Persona* Persona::operator+(Persona p){
+  int Proba;
+  Proba= 1+rand()%100;
+  cout<<"Con gorro no hay mocoso"<<endl;
+  if (Proba ==1) {
+    cout<<"Sin gorro ,GAME OVER"<<endl;
+    return (*this) + (p);
+  }
+
+  return NULL;
+}
 
 
+//Sin condon
 Persona* Persona::operator*(Persona& p) {
    Persona Envio;
    int Pelo1=1,Pelo2=1,Pelo3=1,Pelo4=1;
    int Piel1=1,Piel2=1,Piel3=1,Piel4=1;
    int Ojos1=1,Ojos2=1,Ojos3=1,Ojos4=1;
-
+	
    string POjos1="";
    POjos1+=this->getColorOjos()[0];
    POjos1+= p.getColorOjos()[0];
@@ -79,7 +92,9 @@ Persona* Persona::operator*(Persona& p) {
    POjos4+=this->getColorOjos()[1];
    POjos4+= p.getColorOjos()[1];
 
-     string adnpelo=p.getColorPiel(), adnpiel=p.getColorPiel(),adnojos=p.getColorOjos(); 
+     string adnpelo=p.getColorCabello();
+     string adnpiel=p.getColorPiel();
+     string adnojos=p.getColorOjos(); 
    
    string PROPelo1;
    PROPelo1+=this->getColorCabello()[0];
@@ -194,7 +209,7 @@ Persona* Persona::operator*(Persona& p) {
       Piel4++;
    }
 
-      //ojos1
+   //OJOS
    if (PROPelo1==PROPelo2){
       Pelo1++;
    }
@@ -224,7 +239,7 @@ Persona* Persona::operator*(Persona& p) {
    if (PROPelo3==PROPelo4){
       Pelo3++;
    }
-   //ojos4
+  
    if (PROPelo4==PROPelo1){
       Pelo4++;
    }
@@ -276,17 +291,14 @@ Persona* Persona::operator*(Persona& p) {
    if (Piel4>Piel1&&Piel4>Piel2&&Piel4>Piel3){
       adnpiel=PROPiel4;
    }   
-          string nombre="Carlos";  //Me daba error en el cout por eso se inicializa en ese nombre
+          string nombre; 
+          cout<< "Ingrese el nombre del hijo"<<endl;
+          cin>>nombre;
           string genero;
           string pelo;
           string ojos;
           string piel;
           bool fertil;
-          int nombre1;
-          int cabello2;
-          int ojos2;
-          int piel2;
-          int fertil2;
          
         int sex= rand()%10;
          
@@ -300,7 +312,7 @@ Persona* Persona::operator*(Persona& p) {
          }else{
             genero="Femenino";
          }
-          Persona* m = new Persona(nombre, genero, pelo, ojos, piel, fertil);
+          Persona* m = new Persona(nombre, genero, adnpelo, adnojos, adnpiel, fertil);
    return m;
 }
 
@@ -330,8 +342,16 @@ void Persona::setColorOjos(string ColorOjos){
    this-> ColorOjos=ColorOjos;
 }
 string Persona::getColorOjos(){
-   return ColorOjos;
+  if (ColorOjos=="Negro") {
+    cout<<"Negro--AA"<<endl;
+  }else if (ColorOjos=="Verdes") {
+    cout<<"Verdes--Aa"<<endl;
+  }else if(ColorOjos=="Cafe"){
+    cout<<"Cafe--aa"<<endl;
+  }
+  return ColorOjos;
 }
+
 void Persona::setColorPiel(string ColorPiel){
    this-> ColorPiel=ColorPiel;
 }
