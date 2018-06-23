@@ -1,9 +1,7 @@
-#include <iostream>
 #include <string>
 #include <vector>
 
 
-using namespace std;
 using std::string;
 
 #ifndef PERSONA_H
@@ -20,8 +18,7 @@ class Persona{
 		Persona(string,string,string,string,string,bool);
 		Persona();
 		
-		friend Persona operator+(const Persona &a, const Persona &b);
-		friend Persona operator*(const Persona &a,const Persona &b);
+	
 		string getNombre();
 		void setNombre(string);
 
@@ -39,6 +36,10 @@ class Persona{
 
 		bool getFertil();
 		void setFertil(bool);
+		
+		//Metodos sobrecargados
+		Persona* operator+(Persona& );
+		Persona* operator*(Persona& p);
 
 };
 #endif

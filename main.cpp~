@@ -8,7 +8,7 @@ using std::string;
 using std::endl;
 using std::cout;
 
-void Eliminar(vector<Persona*>,int);
+vector<Persona*> Eliminar(vector<Persona*>,int);
 
 int main(){
 		
@@ -73,6 +73,7 @@ int main(){
  	 	
  	 	
  			 	if(opcion==2){
+ 			 		
  	 				for(int i=0;i<ListPersona.size();i++){
  	 				cout<<i <<"."<< ListPersona[i]->getNombre()<<endl;
  	 				cout<<endl;
@@ -90,8 +91,88 @@ int main(){
  	 	
  	 	}
  	 	
+ 	 	
+ 	 	if(opcion==4){
+ 	 	int opcion2;
+        int p1, p2;
+      	cout<<"1) Desea tener relaciones sin condon"<<endl;
+			<<"2) Desea tener relaciones con condon"<<endl;
+			<<"Ingrese su opcion"<<endl;
+		cin>>opcion2;
+		if (opcion2==1){
+		     bool Esfertil=false;
+      		int persona1,personas2;
+      		cout<<"Ingrese la posicion de la primera persona que va sumar: "<<endl;
+      		cin>>p1;
+      		cout<<"Ingrese la posicion de la segunda persona que va sumar: "<<endl;
+      		cin>>p2;
+      		Persona* perso1 = ListPersona.at(p1);
+      		Persona* perso2 = ListPersona.at(p2);
+
+      		bool Sexo=false;
+      		bool Fertil=false,Menstrucion=false,SexoSinCondon=false;
+			    int randomRegla=1+rand()%(31-1);
+			    int randomSinCondon=1+rand()%(101-1);
+			if (perso1->getFertil()==true&&perso2->getFertil()==true){
+				Fertil==true;
+      		}
+			if (randomRegla<29){
+				Menstrucion==true;
+      		}
+			if (SexoSinCondon<21){
+				SexoSinCondon==true;
+      		}
+			if (perso1->getGenero()=="Masculino"&&perso2->getGenero()=="Femenino"||
+				perso1->getGenero()=="Femenino"&&perso2->getGenero()=="Masculino"){
+				Sexo=true;
+      		}
+      		if (Sexo==true&&Menstrucion==true&&Fertil==true&SexoSinCondon==true){
+      Persona* tercera = (*perso1)*(*perso2); 
+            ListPersona.push_back(tercera);
+      		}
+		}
+ 	 	
+			if(opcion2==2){
+			bool Esfertil=false;
+      		int pe1,pe2;
+      		cout<<"Ingrese la posicion de la persona:"<<endl;
+      		cin>>pe1;
+      		cout<<"Ingrese la posicion de la segunda persona:"<<endl;
+      		cin>>pe2;
+      		Persona* perso1 = ListPersona.at(pe1);
+      		Persona* perso2 = ListPersona.at(pe2);
+      		bool Sexo=false;
+      		bool Fertil=false,Menstrucion=false,SexoSinCondon=false;
+			int randomRegla=1+rand()%(31-1);
+			int randomConCondon=1+rand()%(101-1);
+			if (perso1->getFertil()==true&&perso2->getFertil()==true){
+				Fertil==true;
+      		}
+			if (randomRegla<29){
+					Menstrucion==true;
+      		}
+			if (randomConCondon<4){
+					SexoSinCondon==true;
+      		}
+			if (perso1->getGenero()=="Masculino"&&perso2->getGenero()=="Femenino"||
+				perso1->getGenero()=="Femenino"&&perso2->getGenero()=="Masculino"){
+				Sexo=true;
+      		}
+      		if (Sexo==true
+      			&&Menstrucion==true&&Fertil==true&&SexoSinCondon==true){
+            Persona* hijo = (*perso1)*(*perso2); 
+            ListPersona.push_back(hijo);
+      		}else{
+            cout<<"No salio embarazada"<<endl;
+          }
+			
+			} 	 	
+ 	 	
+ 	 	}
+ 	 	
  	 	    
-     
+     cout<<"Desea salir s/n"<<endl;
+     cin>>resp;
      }//Fin
      
      return 0;
